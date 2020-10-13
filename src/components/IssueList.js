@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from 'react';
 import Issue from './Issue';
 import { Route, Link } from 'react-router-dom';
+import { Title } from "bloomer";
 
 import './issuelist.css';
 
@@ -24,12 +25,14 @@ const IssueList = props => {
     <>
         {!!issuesList.length ? (
     <>
-        <h1>Github Issues</h1>
+        
+       
         <Route exact path="/">
+            <Title>Github Issues List</Title>
             <ul>
                 {issuesList.map((issue, index) => {
                     return (
-                        <li key={issue.id}>{issue.title}
+                        <li key={issue.id}>{issue.title}<br/>
                             <Link to={`/issue/${issue.number}`}>View Details</Link>
                         </li>
                     );

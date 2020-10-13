@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import "bulma/css/bulma.css";
+import { Container } from "bloomer";
 
 import './App.css';
 import IssueList from './components/IssueList';
@@ -9,7 +11,10 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <IssueList />
+        <Container>
+          <IssueList />
+        </Container>
+
       </Router>
 
 

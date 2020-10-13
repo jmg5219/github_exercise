@@ -1,6 +1,7 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import { Title } from "bloomer";
 
 const Issue = (props) => {
     const { issuesList } = props;
@@ -13,7 +14,7 @@ const Issue = (props) => {
     return (
 
         <div>
-            <h2>{issue.title}</h2>
+            <Title>{issue.title}</Title>
             <br/>
             <a href={issue.url} >{issue.url}</a>
             <br/>
