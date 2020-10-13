@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Issue from './Issue';
+import { Route, Link } from 'react-router-dom';
 
 import './issuelist.css';
 
@@ -17,7 +18,7 @@ class IssueList extends Component {
         return data;
     };
 
-   
+
 
 
     async componentDidMount() {
@@ -35,20 +36,32 @@ class IssueList extends Component {
     render() {
         const { issuesList } = this.state
         return (
-            <div>
-                    {!!issuesList.length?(<ul>
-                    {issuesList.map((issue, index) => (
-                            
-                            <li key={issue.id}><Issue issue={issue} /></li>
-              
-                    ))}
-                    </ul>):(<li></li>)}
-                    
-                
+            <>
 
+                {!!issuesList.length ? (
+                    <>
+                        <h1>Github Issues</h1>
+                        <Route exact path="/">
+                            <ul>
+                                {issuesList.map((issue, index) => {
+                                    return (
+                                        <li key={issue.id}>{issue.title}
+                                            <Link to={`/issue/${issue.number}`}>View Details</Link>
+                                        </li>
+                                    );
+                                }
+                                )}
+                            </ul>
+                        </Route>
+                        <Route path={`/issue/:issue_number`}>
+                            <Link to="/">Return to list</Link>
+                            <Issue issuesList={issuesList} />
+                        </Route>
 
-                
-            </div>
+                    </>
+                    ) : (<p>fetching issues...</p>)}
+
+            </>
 
 
         )
